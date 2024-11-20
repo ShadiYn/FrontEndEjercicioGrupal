@@ -36,6 +36,13 @@ public class Usuario implements UserDetails {
 	public Usuario() {
 	}
 
+	public Usuario(String nombre, String username, String password) {
+		super();
+		this.nombre = nombre;
+		this.username = username;
+		this.password = password;
+	}
+
 	public Usuario(String nombre, String apellido, String username, String password, int edad, String biografia,
 			LocalDate nacimiento, String lugarResidencia, String foto) {
 		super();

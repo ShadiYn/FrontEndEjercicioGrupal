@@ -52,8 +52,25 @@ public class MainController {
 
 	}
 
-	// Registro con una array
+	
 	@PostMapping(path = "/register")
+	public String register(String[] things) {
+		List<Usuario> people = usuarioRepository.findAll();
+		for (Usuario usr : people) {
+			if (usr.getUsername().equals(things[0])) {
+				return "Usuario repetido";
+			}
+		}
+		
+		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
+		Usuario user = new Usuario(things[0], things[1],b.encode(things[2]));
+		usuarioRepository.save(user);
+		return "Register exitoso";
+
+	}
+	
+	// Registro con una array
+	/*@PostMapping(path = "/register")
 	public String register(String[] things) {
 		List<Usuario> people = usuarioRepository.findAll();
 		for (Usuario usr : people) {
@@ -69,7 +86,7 @@ public class MainController {
 		usuarioRepository.save(user);
 		return "Register exitoso";
 
-	}
+	}*/
 
 	// Crear evento recibiendo una array ( Se puede cambiar)
 	@PostMapping("/createEvent")
@@ -106,7 +123,11 @@ public class MainController {
 		}
 		eventoRepository.save(evento);
 	}
-
+	@GetMapping("/checkAllEvents")
+	public List<Evento> checkAllEvents(@PathVariable("id") int id, @RequestBody String eventName) {
+		List<Evento> eventos = eventoRepository.findAll();
+		return eventos;
+	}
 	// Comprobar si estas dentro del evento
 	@GetMapping("/checkEvents")
 	public boolean checkEvents(@PathVariable("id") int id, @RequestBody String eventName) {
