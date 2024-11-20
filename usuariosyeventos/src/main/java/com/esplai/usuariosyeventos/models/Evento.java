@@ -2,6 +2,7 @@ package com.esplai.usuariosyeventos.models;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class Evento {
 	private LocalDate fecha;
 	private String lugar;
 	@ManyToMany
-	private Usuario participantes;
+	private List<Usuario> participantes;
 	private String descripcion;
 	
 	public Evento(String nombre, LocalDate fecha, String lugar, String descripcion) {
@@ -48,12 +49,13 @@ public class Evento {
 	public void setLugar(String lugar) {
 		this.lugar = lugar;
 	}
-	public Usuario getParticipantes() {
+	public List<Usuario> getParticipantes() {
 		return participantes;
 	}
-	public void setParticipantes(Usuario participantes) {
+	public void setParticipantes(List<Usuario> participantes) {
 		this.participantes = participantes;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}

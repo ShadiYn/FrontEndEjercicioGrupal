@@ -1,29 +1,45 @@
 package com.esplai.usuariosyeventos.models;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-public class Usuario {
+@Getter
+@Setter
+@Entity
+@Table(name = "user")
+public class Usuario implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nombre;
 	private String apellido;
+	private String username;
+	private String password;
 	private int edad;
 	private String biografia;
 	private LocalDate nacimiento;
 	private String lugarResidencia;
 	private String foto;
 
-	public Usuario(String nombre, String apellido, int edad, String biografia, LocalDate nacimiento,
+	public Usuario(String nombre, String apellido,String username, String password, int edad, String biografia, LocalDate nacimiento,
 			String lugarResidencia, String foto) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.username = username;
+		this.password = password;
 		this.edad = edad;
 		this.biografia = biografia;
 		this.nacimiento = nacimiento;
@@ -71,14 +87,6 @@ public class Usuario {
 		this.nacimiento = nacimiento;
 	}
 
-	public String getlugarResidencia() {
-		return lugarResidencia;
-	}
-
-	public void setlugarResidencia(String lugarResidencia) {
-		this.lugarResidencia = lugarResidencia;
-	}
-
 	public String getFoto() {
 		return foto;
 	}
@@ -89,6 +97,30 @@ public class Usuario {
 
 	public int getId() {
 		return id;
+	}
+
+
+	public String getLugarResidencia() {
+		return lugarResidencia;
+	}
+
+	public void setLugarResidencia(String lugarResidencia) {
+		this.lugarResidencia = lugarResidencia;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
 	}
 
 }
