@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
-import Menu from '../Pages/MainMenu';
+
 import UserProfile from '../Pages/UserProfile';
 import PrivateListEvents from '../Pages/PrivateListEvents';
 import PublicListEvents from '../Pages/PublicListEvents';
+import Login from '../Pages/Login'
 
 const Router = () => (
     <BrowserRouter>
         <Routes>   
-            <Route index element={<Menu/>} />
+            <Route index element={<Login/>} />
 
             <Route path="/user-profile" element={<UserProfile/>} />
 

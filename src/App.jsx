@@ -1,17 +1,9 @@
-import Router from './app/Router';
-
+import Router from "./app/Router";
+import Login from "./Pages/Login";
+import { useUserContext } from "./providers/UserProvider";
 const App = () =>{
-
-  return(
-    <div>
-  <div>
-    <Router>
-      
-    </Router>
-  </div>
-    </div>
-  )
-
-}
-
-export default App;
+  const {user} = useUserContext();
+    return  user ? <Router/> : <Login/>
+  
+  }
+  export default App

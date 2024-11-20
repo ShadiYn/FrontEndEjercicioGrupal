@@ -11,8 +11,6 @@ const UserProfile = ()=>{
         <>
             <div>
                 <button onClick={handlePerfil}>Home</button>
-
-
                 <p> esto es perfil</p>
             </div>
         
