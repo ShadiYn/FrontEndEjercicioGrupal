@@ -4,13 +4,15 @@ package com.esplai.usuariosyeventos.models;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-
+@Entity
+@Component
 public class Evento {
 
 	@Id
@@ -22,6 +24,8 @@ public class Evento {
 	@ManyToMany
 	private List<Usuario> participantes;
 	private String descripcion;
+	
+	public Evento() {}
 	
 	public Evento(String nombre, LocalDate fecha, String lugar, String descripcion) {
 		this.nombre = nombre;

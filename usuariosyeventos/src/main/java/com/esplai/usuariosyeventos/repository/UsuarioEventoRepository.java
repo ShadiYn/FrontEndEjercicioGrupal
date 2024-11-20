@@ -10,4 +10,5 @@ import com.esplai.usuariosyeventos.models.UsuarioEvento;
 public interface UsuarioEventoRepository extends CrudRepository<UsuarioEvento, Integer> {
 	
 	  public List<UsuarioEvento> findAll();
+	  
 }

@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,8 +15,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Component
 @Entity
 @Table(name = "user")
 public class Usuario implements UserDetails {
@@ -33,6 +33,8 @@ public class Usuario implements UserDetails {
 	private String lugarResidencia;
 	private String foto;
 
+	public Usuario() {}
+	
 	public Usuario(String nombre, String apellido,String username, String password, int edad, String biografia, LocalDate nacimiento,
 			String lugarResidencia, String foto) {
 		super();
