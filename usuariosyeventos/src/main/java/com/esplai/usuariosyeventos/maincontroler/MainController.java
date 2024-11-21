@@ -145,10 +145,10 @@ public class MainController {
 		eventoRepository.save(evento);
 	}
 	@GetMapping("/checkAllEvents")
-	public List<Evento> checkAllEvents(@PathVariable("id") int id, @RequestBody String eventName) {
-		List<Evento> eventos = eventoRepository.findAll();
-		return eventos;
+	public List<Evento> checkAllEvents() {
+		return eventoRepository.findAll();
 	}
+
 	// Comprobar si estas dentro del evento
 	@GetMapping("/checkEvents")
 	public boolean checkEvents(@PathVariable("id") int id, @RequestBody String eventName) {
