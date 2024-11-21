@@ -36,7 +36,7 @@ const Register = () => {
             <input
               type="text"
               name="username"
-              placeholder="Nombre de Usuario"
+              placeholder="Nombre completo"
               value={formData.username}
               onChange={handleChange}
               required
@@ -44,7 +44,7 @@ const Register = () => {
             <input
               type="text"
               name="nombre"
-              placeholder="Nombre Completo"
+              placeholder="Nombre de Usuario"
               value={formData.nombre}
               onChange={handleChange}
               required
