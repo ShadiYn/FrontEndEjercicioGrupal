@@ -1,27 +1,83 @@
 import axios from 'axios';
+
+// Crear una instancia de axios con la URL base
 const i = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'http://localhost:8080/cosas'
 });
 
-export const login = async ({username,password})=>{
-    const token = btoa(username+ ':'+ password);
+// Función de login
+export const login = async ({ username, password }) => {
+    // Generar token de autenticación
+    const token = btoa(username + ':' + password);
 
-    console.log('ajshajshas', token);
+    // Log para ver el token generado
+    console.log('Generando token para login:', token);
 
-    const response = await i.post('/login', {},{
-        headers: {  
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic ' + token
-          }
-        }
-    );
+    try {
+        // Log para verificar los datos enviados
+        console.log('Realizando solicitud POST para login a /login con los encabezados: ', {
+            'Authorization': 'Basic ' + token,
+            'Content-Type': 'application/json'
+        });
 
-    setAuth(token);
-    return response.data;
+        // Realizar la solicitud POST para login
+        const response = await i.post('/login', {}, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + token
+            }
+        });
+
+        // Log para ver la respuesta del login
+        console.log('Respuesta del login:', response.data);
+
+        // Guardar el token en la configuración de axios para futuras solicitudes
+        setAuth(token);
+
+        return response.data;  // Retorna la respuesta del login (por ejemplo, token o mensaje)
+    } catch (error) {
+        // Log de error si la solicitud falla
+        console.error('Error al hacer login:', error.response ? error.response.data : error.message);
+        throw error;  // Lanzar el error para que pueda ser manejado en el componente
+    }
 }
 
-
+// Función para configurar el token de autenticación en axios
 const setAuth = async (token) => {
-    console.log('aaaaaaaaaaaaaaaaaaaaaaa', token)
-      i.defaults.headers.common.Authorization = `basic ${token}`;
-  };
+    console.log('Configurando autorización con token:', token);
+    i.defaults.headers.common.Authorization = `Basic ${token}`;
+};
+
+// Función de registro (solo para referencia)
+export const registro = async (formData) => {
+  try {
+    // Log para mostrar los datos de registro
+    console.log("Enviando datos de registro: ", formData);
+
+    const response = await axios.post('http://localhost:8080/cosas/register', formData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // Log para la respuesta exitosa del registro
+    console.log('Registro exitoso', response.data);
+    return response.data;
+  } catch (error) {
+    // Log para error al registrar
+    console.error('Error al registrar usuario:', error);
+    throw error;
+  }
+};
+
+export const fetchAllEvents = async () => {
+  try {
+    const response = await i.get('/checkAllEvents');
+    return response.data;
+  } catch (error) {
+    console.error("Error al cargar los eventos:", error.response || error.message);
+    throw error;
+  }
+};
+
+
