@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.esplai.usuariosyeventos.dtos.RegistroDTO;
 import com.esplai.usuariosyeventos.models.Evento;
 import com.esplai.usuariosyeventos.models.Usuario;
 import com.esplai.usuariosyeventos.repository.EventoRepository;
@@ -56,6 +57,25 @@ public class MainController {
 
 	
 	@PostMapping(path = "/register")
+	public String register(@RequestBody RegistroDTO registroDTO) {
+	    List<Usuario> people = usuarioRepository.findAll();
+	    for (Usuario usr : people) {
+	        if (usr.getUsername().equals(registroDTO.getUsername())) {
+	            return "Usuario repetido";
+	        }
+	    }
+
+	    Usuario user = new Usuario(
+	        registroDTO.getUsername(),
+	        registroDTO.getNombre(),
+	        b.encode(registroDTO.getPassword())
+	    );
+	    usuarioRepository.save(user);
+	    return "Registro exitoso";
+	}
+	
+	/*
+	@PostMapping(path = "/register")
 	public String register(@RequestBody String[] things) {
 		List<Usuario> people = usuarioRepository.findAll();
 		for (Usuario usr : people) {
@@ -63,13 +83,13 @@ public class MainController {
 				return "Usuario repetido";
 			}
 		}
-				
+
 		Usuario user = new Usuario(things[0], things[1],b.encode(things[2]));
 		usuarioRepository.save(user);
 		return "Register exitoso";
 
 	}
-	
+	*/
 	// Registro con una array
 	/*@PostMapping(path = "/register")
 	public String register(String[] things) {
