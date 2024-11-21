@@ -56,7 +56,7 @@ public class SecurityConfig {
 		
 			try {							    
 				// Definimos que urls estarán desprotegidas y no necesitarán recibir las credenciales para poder ser accedidas
-				requests.requestMatchers("/endpointdesprotegido", "/cosas/register").permitAll().anyRequest().authenticated();
+				requests.requestMatchers("/endpointdesprotegido", "/cosas/register", "/register").permitAll().anyRequest().authenticated();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

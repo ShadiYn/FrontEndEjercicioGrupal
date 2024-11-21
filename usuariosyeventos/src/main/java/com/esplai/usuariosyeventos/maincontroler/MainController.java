@@ -37,6 +37,8 @@ public class MainController {
 	private UsuarioRepository usuarioRepository;
 	@Autowired
 	private UsuarioEventoRepository usuarioEventoRepository;
+	@Autowired
+	private BCryptPasswordEncoder b;
 	//@Autowired
 	//private ObjetoRepository objetoRepository;
 
@@ -62,7 +64,7 @@ public class MainController {
 			}
 		}
 		
-		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
+		
 		Usuario user = new Usuario(things[0], things[1],b.encode(things[2]));
 		usuarioRepository.save(user);
 		return "Register exitoso";
