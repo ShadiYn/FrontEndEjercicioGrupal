@@ -63,8 +63,7 @@ public class MainController {
 				return "Usuario repetido";
 			}
 		}
-		
-		
+				
 		Usuario user = new Usuario(things[0], things[1],b.encode(things[2]));
 		usuarioRepository.save(user);
 		return "Register exitoso";
