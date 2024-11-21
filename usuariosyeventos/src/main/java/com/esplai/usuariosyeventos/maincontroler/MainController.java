@@ -54,7 +54,7 @@ public class MainController {
 
 	
 	@PostMapping(path = "/register")
-	public String register(String[] things) {
+	public String register(@RequestBody String[] things) {
 		List<Usuario> people = usuarioRepository.findAll();
 		for (Usuario usr : people) {
 			if (usr.getUsername().equals(things[0])) {
