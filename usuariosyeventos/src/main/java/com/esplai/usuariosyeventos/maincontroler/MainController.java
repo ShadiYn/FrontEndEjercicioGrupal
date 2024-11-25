@@ -3,6 +3,7 @@ package com.esplai.usuariosyeventos.maincontroler;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.esplai.usuariosyeventos.dtos.EventoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -106,12 +107,18 @@ public class MainController {
 	}
 
 	@PostMapping(path = "/createEvent")
-	public boolean createEvent(@RequestBody String name, LocalDate date, String place, String desc) {
-		Evento ev = new Evento(name, date, place, desc); // esto es debug por si falla
+	public boolean createEvent(@RequestBody EventoDTO eventoDTO) {
+		Evento ev = new Evento(
+				eventoDTO.getName(),
+				eventoDTO.getDate(),
+				eventoDTO.getPlace(),
+				eventoDTO.getDesc()
+		);
 		System.out.println(ev);
 		eventoRepository.save(ev);
 		return true;
 	}
+
 
 	@GetMapping("/getEventById")
 	public Evento getEventById(@RequestBody int id) {
