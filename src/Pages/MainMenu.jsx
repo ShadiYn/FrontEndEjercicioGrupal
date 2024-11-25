@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchAllEvents } from "../apis/api";
+import { fetchAllEvents, deleteEvent } from "../apis/api";
 import "../app/MainMenu.css";
 
 const MainMenu = () => {
@@ -36,6 +36,10 @@ const MainMenu = () => {
     navigate(`/edit-event/${id}`);
   };
 
+  const handleDeleteEvent = (id) => {
+    deleteEvent(id);
+    setEvents((prevEvents) => prevEvents.filter((event) => event.id !== id));
+  };
   return (
     <div className="">
       {/* Navbar */}
@@ -69,6 +73,10 @@ const MainMenu = () => {
                 </p>
                 <button onClick={() => handleUpdateEvent(event.id)}>
                   Editar evento
+                </button>
+                <br />
+                <button onClick={() => handleDeleteEvent(event.id)}>
+                  Eliminar evento
                 </button>
               </div>
             ))}

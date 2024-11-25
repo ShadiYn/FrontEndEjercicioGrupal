@@ -102,4 +102,13 @@ export const updateEvent = async (obj) => {
   }
 }
 
+export const deleteEvent = async (id) => {
+  try {
+    const response = await i.delete(`/deleteEvent/${id}`);
+    return response;
+  } catch (error) {
+    console.error("No se ha podido eliminar el evento");
+  }
+}
+
 
