@@ -30,7 +30,7 @@ public class MainController {
 
 	@Autowired
 	private EventoRepository eventoRepository;
-	@Autowired
+	//@Autowired
 	private EventoUtils eventoUtils;
 	@Autowired
 	private UsuarioRepository usuarioRepository;

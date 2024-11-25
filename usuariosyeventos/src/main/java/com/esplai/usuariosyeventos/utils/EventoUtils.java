@@ -2,16 +2,17 @@ package com.esplai.usuariosyeventos.utils;
 
 import java.util.List;
 
+import jdk.jfr.Event;
 import org.springframework.stereotype.Service;
 import com.esplai.usuariosyeventos.models.Evento;
 import com.esplai.usuariosyeventos.models.Usuario;
 
 import lombok.experimental.UtilityClass;
-@UtilityClass
+//@UtilityClass
 @Service
 public class EventoUtils {
 
-	
+
 	public boolean AddParticipante(Evento evento, Usuario usuario) {
 		List<Usuario> part = evento.getParticipantes();
 		part.add(usuario);
