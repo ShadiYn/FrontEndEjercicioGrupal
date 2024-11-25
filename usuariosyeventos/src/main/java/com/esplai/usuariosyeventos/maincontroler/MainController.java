@@ -77,7 +77,7 @@ public class MainController {
 	// Se puede separar pero aqui dependiendo del booleano que recibe puede entrar o
 	// salir del evento
 	@PostMapping("/joinLeaveEvent")
-	public void joinLeaveEvent(@PathVariable("id") int id, @RequestBody String eventName, Boolean inside) {
+	public void joinLeaveEvent(@RequestBody int id, String eventName, Boolean inside) {
 		Usuario usuario = usuarioRepository.findById(id);
 		Evento evento = eventoRepository.findByNombre(eventName);
 		
@@ -99,7 +99,7 @@ public class MainController {
 
 	// Comprobar si estas dentro del evento
 	@GetMapping("/checkEvents")
-	public boolean checkEvents(@PathVariable("id") int id, @RequestBody String eventName) {
+	public boolean checkEvents(@RequestBody int id, String eventName) {
 		Usuario usuario = usuarioRepository.findById(id);
 		Evento evento = eventoRepository.findByNombre(eventName);
 		if (eventoUtils.checkInsideParticipant(evento, usuario)) {
