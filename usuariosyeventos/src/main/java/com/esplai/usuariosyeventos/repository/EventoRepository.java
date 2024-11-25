@@ -11,4 +11,5 @@ public interface EventoRepository extends CrudRepository<Evento, Integer> {
 	
 	  public List<Evento> findAll();
 	  public Evento findByNombre(String nombre);
+	  public Evento findById(int id);
 }

@@ -40,8 +40,8 @@ public class MainController {
 	private UsuarioEventoRepository usuarioEventoRepository;
 	@Autowired
 	private BCryptPasswordEncoder b;
-	//@Autowired
-	//private ObjetoRepository objetoRepository;
+	// @Autowired
+	// private ObjetoRepository objetoRepository;
 
 	@PostMapping(path = "/login")
 	public ResponseEntity<String> basicauth(UsernamePasswordAuthenticationToken upa) {
@@ -55,26 +55,20 @@ public class MainController {
 
 	}
 
-	
 	@PostMapping(path = "/register")
 	public String register(@RequestBody RegistroDTO registroDTO) {
-	    List<Usuario> people = usuarioRepository.findAll();
-	    for (Usuario usr : people) {
-	        if (usr.getUsername().equals(registroDTO.getUsername())) {
-	            return "Usuario repetido";
-	        }
-	    }
+		List<Usuario> people = usuarioRepository.findAll();
+		for (Usuario usr : people) {
+			if (usr.getUsername().equals(registroDTO.getUsername())) {
+				return "Usuario repetido";
+			}
+		}
 
-	    Usuario user = new Usuario(
-	        registroDTO.getUsername(),
-	        registroDTO.getNombre(),
-	        b.encode(registroDTO.getPassword())
-	    );
-	    usuarioRepository.save(user);
-	    return "Registro exitoso";
+		Usuario user = new Usuario(registroDTO.getUsername(), registroDTO.getNombre(),
+				b.encode(registroDTO.getPassword()));
+		usuarioRepository.save(user);
+		return "Registro exitoso";
 	}
-	
-	
 
 	// Se puede separar pero aqui dependiendo del booleano que recibe puede entrar o
 	// salir del evento
@@ -82,7 +76,7 @@ public class MainController {
 	public void joinLeaveEvent(@RequestBody int id, String eventName, Boolean inside) {
 		Usuario usuario = usuarioRepository.findById(id);
 		Evento evento = eventoRepository.findByNombre(eventName);
-		
+
 		if (!inside) {
 			if (usuario != null && evento != null) {
 				eventoUtils.AddParticipante(evento, usuario);
@@ -94,6 +88,7 @@ public class MainController {
 		}
 		eventoRepository.save(evento);
 	}
+
 	@GetMapping("/checkAllEvents")
 	public List<Evento> checkAllEvents() {
 		return eventoRepository.findAll();
@@ -109,14 +104,28 @@ public class MainController {
 		}
 		return false;
 	}
-	
+
 	@PostMapping(path = "/createEvent")
-	public boolean createEvent(@RequestBody Evento evento) {
-	Evento ev = evento; //esto es debug por si falla
-	System.out.println(ev);
-	 eventoRepository.save(ev);
-	   return true;
+	public boolean createEvent(@RequestBody String name, LocalDate date, String place, String desc) {
+		Evento ev = new Evento(name, date, place, desc); // esto es debug por si falla
+		System.out.println(ev);
+		eventoRepository.save(ev);
+		return true;
 	}
+
+	@GetMapping("/getEventById")
+	public Evento getEventById(@RequestBody int id) {
+		return eventoRepository.findById(id);
+	}
+	// edit Event
+	@PostMapping(path = "/editEvent")
+	public boolean editEvent(@RequestBody Evento evento) {
+		Evento ev = evento;
+		System.out.println(ev);
+		eventoRepository.save(ev);
+		return true;
+	}
+
 	/*
 	 * @DeleteMapping("/delete/{id}") public void deleteLibro(@PathVariable("id")
 	 * Integer id) { Libro i = new Libro(); i.setLibroId(id);

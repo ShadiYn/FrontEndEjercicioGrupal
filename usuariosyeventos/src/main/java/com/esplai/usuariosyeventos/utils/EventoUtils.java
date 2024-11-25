@@ -9,10 +9,9 @@ import com.esplai.usuariosyeventos.models.Evento;
 import com.esplai.usuariosyeventos.models.Usuario;
 
 import lombok.experimental.UtilityClass;
-@UtilityClass
+
 @Service
 public class EventoUtils {
-
 	
 	public boolean AddParticipante(Evento evento, Usuario usuario) {
 		List<Usuario> part = evento.getParticipantes();
