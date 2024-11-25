@@ -18,12 +18,10 @@ import com.esplai.usuariosyeventos.dtos.RegistroDTO;
 import com.esplai.usuariosyeventos.models.Evento;
 import com.esplai.usuariosyeventos.models.Usuario;
 import com.esplai.usuariosyeventos.repository.EventoRepository;
-import com.esplai.usuariosyeventos.repository.ObjetoRepository;
 import com.esplai.usuariosyeventos.repository.UsuarioEventoRepository;
 import com.esplai.usuariosyeventos.repository.UsuarioRepository;
 import com.esplai.usuariosyeventos.utils.EventoUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin // Para hacer peticiones desde otro servidor
 @RestController // Para hacer peticiones REST
@@ -32,7 +30,7 @@ public class MainController {
 
 	@Autowired
 	private EventoRepository eventoRepository;
-	@Autowired
+	//@Autowired
 	private EventoUtils eventoUtils;
 	@Autowired
 	private UsuarioRepository usuarioRepository;
