@@ -80,4 +80,26 @@ export const fetchAllEvents = async () => {
   }
 };
 
+export const fetchEventById = async (id) => {
+  try {
+    const response = await i.get(`/getEventById/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("No se ha podido obtener el evento");
+    throw error;
+  }
+}
+
+export const updateEvent = async (obj) => {
+  try {
+    console.log("Event", obj)
+    const response = await i.put('/editEvent', obj);
+    return response;
+    
+  } catch (error) {
+    console.error("Error al editar el evento:", error.response || error.message);
+    throw error;
+  }
+}
+
 
