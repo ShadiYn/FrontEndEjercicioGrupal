@@ -2,9 +2,7 @@ package com.esplai.usuariosyeventos.utils;
 
 import java.util.List;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-
 import com.esplai.usuariosyeventos.models.Evento;
 import com.esplai.usuariosyeventos.models.Usuario;
 
