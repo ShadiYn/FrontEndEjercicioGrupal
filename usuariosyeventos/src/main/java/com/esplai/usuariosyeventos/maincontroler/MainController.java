@@ -76,23 +76,6 @@ public class MainController {
 	
 	
 
-	// Crear evento recibiendo una array ( Se puede cambiar)
-	@PostMapping("/createEvent")
-	public void createEvent(@RequestBody String[] things) {
-		LocalDate date = LocalDate.parse(things[1]);
-		/*
-		 * String nombre,
-		 * 
-		 * LocalDate fecha,
-		 * 
-		 * String lugar,
-		 * 
-		 * String descripcion
-		 */
-		Evento evento = new Evento(things[0], date, things[2], things[3]);
-
-	}
-
 	// Se puede separar pero aqui dependiendo del booleano que recibe puede entrar o
 	// salir del evento
 	@PostMapping("/joinLeaveEvent")
