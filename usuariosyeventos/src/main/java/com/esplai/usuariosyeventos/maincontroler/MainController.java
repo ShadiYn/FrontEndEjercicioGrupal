@@ -74,40 +74,7 @@ public class MainController {
 	    return "Registro exitoso";
 	}
 	
-	/*
-	@PostMapping(path = "/register")
-	public String register(@RequestBody String[] things) {
-		List<Usuario> people = usuarioRepository.findAll();
-		for (Usuario usr : people) {
-			if (usr.getUsername().equals(things[0])) {
-				return "Usuario repetido";
-			}
-		}
-
-		Usuario user = new Usuario(things[0], things[1],b.encode(things[2]));
-		usuarioRepository.save(user);
-		return "Register exitoso";
-
-	}
-	*/
-	// Registro con una array
-	/*@PostMapping(path = "/register")
-	public String register(String[] things) {
-		List<Usuario> people = usuarioRepository.findAll();
-		for (Usuario usr : people) {
-			if (usr.getUsername().equals(things[0])) {
-				return "Usuario repetido";
-			}
-		}
-		LocalDate date = LocalDate.parse(things[6]);
-		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-		// (yyyy-MM-dd))
-		Usuario user = new Usuario(things[0], things[1], things[2], b.encode(things[3]), Integer.parseInt(things[4]),
-				things[5], date, things[7], things[8]);
-		usuarioRepository.save(user);
-		return "Register exitoso";
-
-	}*/
+	
 
 	// Crear evento recibiendo una array ( Se puede cambiar)
 	@PostMapping("/createEvent")
@@ -159,7 +126,14 @@ public class MainController {
 		}
 		return false;
 	}
-
+	
+	@PostMapping(path = "/createEvent")
+	public boolean createEvent(@RequestBody Evento evento) {
+	Evento ev = evento; //esto es debug por si falla
+	System.out.println(ev);
+	 eventoRepository.save(ev);
+	   return true;
+	}
 	/*
 	 * @DeleteMapping("/delete/{id}") public void deleteLibro(@PathVariable("id")
 	 * Integer id) { Libro i = new Libro(); i.setLibroId(id);
