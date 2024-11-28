@@ -10,7 +10,6 @@ const EditEvent = () => {
   useEffect(() => {
     const loadEvent = async () => {
       try {
-        // Carga el evento mediante la ID
         const data = await fetchEventById(id);
         console.log(111111111111111, data);
         setEvent(data);
