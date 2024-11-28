@@ -102,4 +102,30 @@ export const updateEvent = async (obj) => {
   }
 }
 
+export const createEvent = async (eventData) => {
+    const token = localStorage.getItem('authToken');  // Recupera el token desde localStorage
+    
+    console.log('Token recuperado para crear evento:', token);  // Verifica el token recuperado
+
+    if (!token) {
+        console.error('No se encontró el token en localStorage');  // Si no se encuentra el token
+        return;  // Detener la ejecución si el token no está presente
+    }
+
+    try {
+        const response = await axios.post('http://localhost:8080/cosas/createEvent', eventData, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Basic ${token}`, // Enviar el token en el encabezado Authorization
+            },
+        });
+
+        console.log('Evento creado:', response.data); // Log de la respuesta
+        return response.data; // Retorna la respuesta si la solicitud fue exitosa
+    } catch (error) {
+        console.error('Error al crear el evento:', error.response ? error.response.data : error.message);
+        throw error; // Lanzar el error para ser manejado en el componente
+    }
+};
+
 

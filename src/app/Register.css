@@ -1,3 +1,4 @@
+/* Estilo global para la página de registro */
 .contenido {
   margin: 0;
   padding: 0;
@@ -9,6 +10,7 @@
   background-color: #f7f9fc;
 }
 
+/* Contenedor de la tarjeta de registro */
 .card-container {
   display: flex;
   width: 80%;
@@ -18,8 +20,10 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.6s ease-in-out;
 }
 
+/* Estilo del formulario de registro */
 .register-form {
   flex: 1;
   padding: 40px;
@@ -27,6 +31,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: #fafafa;
+  transition: all 0.6s ease-in-out;
 }
 
 .register-form h1 {
@@ -36,6 +41,7 @@
   text-align: center;
 }
 
+/* Estilo de los campos de entrada */
 .register-form input {
   width: 100%;
   padding: 14px;
@@ -44,14 +50,17 @@
   border-radius: 8px;
   font-size: 16px;
   box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Efecto de enfoque en los campos de entrada */
 .register-form input:focus {
   border-color: #fe80c7;
+  box-shadow: 0 0 5px rgba(254, 128, 199, 0.6);
   outline: none;
 }
 
+/* Estilo del botón de registro */
 .register-form button {
   width: 100%;
   padding: 14px;
@@ -62,13 +71,15 @@
   color: black;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
+/* Efecto hover para el botón de registro */
 .register-form button:hover {
   background-color: #b26490;
 }
 
+/* Estilo para el botón de volver al login */
 .register-form .login-button {
   background-color: #fdd284;
   color: black;
@@ -79,6 +90,7 @@
   background-color: #b6975e;
 }
 
+/* Estilo de la imagen de fondo del registro */
 .register-image {
   flex: 1;
   background: url('/public/imagenPrueba.jpg') no-repeat center center;
@@ -87,20 +99,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.6s ease-in-out;
 }
 
+/* Aseguramos que la imagen tenga un buen aspecto */
 .register-image img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
 }
 
+/* Media query para dispositivos grandes */
 @media (min-width: 768px) {
   .card-container {
     height: 60vh;
   }
 }
 
+/* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
   .card-container {
     flex-direction: column;
@@ -110,5 +126,17 @@
 
   .register-image {
     height: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Ajustes para pantallas muy pequeñas */
+  .register-form h1 {
+    font-size: 24px;
+  }
+
+  .register-form button {
+    padding: 12px;
+    font-size: 14px;
   }
 }

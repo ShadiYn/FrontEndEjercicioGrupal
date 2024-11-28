@@ -1,7 +1,8 @@
+// Register.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registro } from "../apis/api";
-import '../app/Register.css'; 
+import "../app/Register.css"; // Your existing CSS
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -57,15 +58,11 @@ const Register = () => {
               onChange={handleChange}
               required
             />
-            <button type="submit">Registrarse</button>
+            <button type="submit" className="btn">Registrarse</button>
           </form>
-          <button className="login-button" onClick={() => navigate("/")}>
-            Volver al Login
-          </button>
+          <button className="login-button" onClick={() => navigate("/")}>Volver al Login</button>
         </div>
-        <div className="register-image">
-       
-        </div>
+        <div className="register-image"></div>
       </div>
     </div>
   );

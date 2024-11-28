@@ -6,7 +6,9 @@ import UserProvider from './providers/UserProvider.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <UserProvider>
+
     <App />
+    
     </UserProvider>
   </StrictMode>,
 )

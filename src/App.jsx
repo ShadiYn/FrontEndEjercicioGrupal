@@ -1,10 +1,13 @@
 import Router from "./app/Router";
+
 import { useUserContext } from "./providers/UserProvider";
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Asegúrate de importar Routes y Route
-import Home from './Pages/MainMenu'
+
 import Login from './Pages/Login'
-import UserProfile from "./Pages/UserProfile";
+
 import Register from './Pages/Register'
+
 const App = () => {
   const { user } = useUserContext();
   return (

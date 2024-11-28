@@ -36,6 +36,9 @@ const MainMenu = () => {
     navigate(`/edit-event/${id}`);
   };
 
+  const handleCreateEvent = ()=>{
+    navigate('/createEvent');
+  }
   return (
     <div className="">
       {/* Navbar */}
@@ -50,6 +53,7 @@ const MainMenu = () => {
 
       {/* Título principal */}
       <h1 className="title">Eventos Públicos Disponibles</h1>
+      <button onClick={handleCreateEvent}>AñadirEvento</button>
 
       {/* Contenedor de los eventos */}
       <div className="events-container">
