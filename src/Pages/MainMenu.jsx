@@ -36,16 +36,13 @@ const MainMenu = () => {
     navigate(`/edit-event/${id}`);
   };
 
-<<<<<<< HEAD
   const handleCreateEvent = ()=>{
     navigate('/createEvent');
   }
-=======
   const handleDeleteEvent = (id) => {
     deleteEvent(id);
     setEvents((prevEvents) => prevEvents.filter((event) => event.id !== id));
   };
->>>>>>> a08f64e718fe348e66a4ff332acf2fda143bb2d9
   return (
     <div className="">
       {/* Navbar */}

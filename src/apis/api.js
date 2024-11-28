@@ -102,7 +102,6 @@ export const updateEvent = async (obj) => {
   }
 }
 
-<<<<<<< HEAD
 export const createEvent = async (eventData) => {
     const token = localStorage.getItem('authToken');  // Recupera el token desde localStorage
     
@@ -128,7 +127,6 @@ export const createEvent = async (eventData) => {
         throw error; // Lanzar el error para ser manejado en el componente
     }
 };
-=======
 export const deleteEvent = async (id) => {
   try {
     const response = await i.delete(`/deleteEvent/${id}`);
@@ -137,6 +135,5 @@ export const deleteEvent = async (id) => {
     console.error("No se ha podido eliminar el evento");
   }
 }
->>>>>>> a08f64e718fe348e66a4ff332acf2fda143bb2d9
 
 
