@@ -1,10 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
 
 import UserProfile from "../Pages/UserProfile";
 import PrivateListEvents from "../Pages/PrivateListEvents";
 import PublicListEvents from "../Pages/PublicListEvents";
-import Login from "../Pages/Login";
-import Register from "../Pages/Register";
 import MainMenu from "../Pages/MainMenu";
 import EditEvent from "../Pages/EditEvent";
 import CreateEvent from "../Pages/CrearEventos";
